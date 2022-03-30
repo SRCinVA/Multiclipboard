@@ -2,7 +2,10 @@ import sys
 import clipboard
 import json
 
-#clipboard.copy("superduper")
+# clipboard.copy("abc")
+# data = clipboard.paste()
+# print(data)    
 
-print(sys.argv)
-
+if len(sys.argv) == 2:
+    command = sys.argv[1] # to pull out the first index in the list
+    print(command)
