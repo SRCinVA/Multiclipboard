@@ -13,9 +13,12 @@ def save_data(filepath,data):
         json.dump(data,f)  # this will dump the data "the python dictionary" to the .json object onto the file ("f")
 
 def load_data(filepath):
-    with open(filepath,"r") as f:
-        data = json.load(f)
-        return data
+    try:  #for when you don't know if something will work
+        with open(filepath,"r") as f:
+            data = json.load(f)
+            return data
+    except: # if the "try" does not work
+        return {} # return an empty dictionary
 
 # save_items("test.json", {"key": "value"})
 
@@ -27,9 +30,14 @@ if len(sys.argv) == 2:
         key = input("Enter a key: ")
         data[key] = clipboard.paste()  # we put whatever key is inputted into the clipbaord.
         save_data(SAVED_DATA, data)  # this will save the dtaa persistently
-        print("save")
+        print("data saved")
     elif command == "load":
-        print("load")
+        key = input("Enter a key: ")
+        if key in data: # if we already have the key they;ve typed in ...
+            clipboard.copy(data[key])
+            print("Data copied to clipboard")
+        else:
+            print("Key does not exist")
     elif command == "list":
         print("list")
     else:
