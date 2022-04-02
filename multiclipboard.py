@@ -34,12 +34,12 @@ if len(sys.argv) == 2:
     elif command == "load":
         key = input("Enter a key: ")
         if key in data: # if we already have the key they;ve typed in ...
-            clipboard.copy(data[key])
-            print("Data copied to clipboard")
+            clipboard.copy(data[key])  # we will access the value attached to that key and put it inot their clipboard.
+            print("Data copied to clipboard.")
         else:
-            print("Key does not exist")
+            print("Key does not exist") # ... in case that key cannot be found
     elif command == "list":
-        print("list")
+        print(data)  # here, we will simply print out the keys and values in the dictionary.
     else:
         print ("Unknown command")
 else:
